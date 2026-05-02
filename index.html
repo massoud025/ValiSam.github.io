@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vali Sam – Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+:root{
+  --bg:#faf8ff;--bg2:#f2ecff;--bg3:#e8deff;
+  --accent:#7c3aed;--accent2:#a855f7;--accent3:#5b21b6;
+  --text:#1a0533;--muted:#7c6f9a;--border:rgba(124,58,237,0.18);
+  --card:#ffffff;--shadow:rgba(124,58,237,0.10);
+}
+body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+#mc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.70}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(250,248,255,0.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 6vw;height:62px}
+.logo{font-family:'Space Mono',monospace;font-size:15px;font-weight:700;color:var(--accent);letter-spacing:2px}
+.nav-links{display:flex;gap:32px}
+.nav-links a{font-size:13px;color:var(--muted);letter-spacing:1px;transition:color .2s;font-family:'Space Mono',monospace}
+.nav-links a:hover{color:var(--accent)}
+
+/* HERO */
+#home{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px 6vw 60px;position:relative;text-align:center}
+.hero-inner{position:relative;z-index:1;max-width:700px;margin:0 auto}
+.hero-badge{display:inline-block;background:var(--bg2);border:1px solid var(--border);border-radius:30px;padding:6px 18px;font-size:12px;color:var(--accent);letter-spacing:2px;font-family:'Space Mono',monospace;margin-bottom:28px}
+.hero-inner h1{font-size:clamp(2.8rem,6vw,5rem);font-weight:800;line-height:1.05;letter-spacing:-1px}
+.hero-inner h1 span{color:var(--accent)}
+.hero-sub{font-size:17px;color:var(--muted);margin-top:18px;line-height:1.8;max-width:520px;margin-left:auto;margin-right:auto}
+.hero-btns{display:flex;gap:14px;margin-top:36px;justify-content:center;flex-wrap:wrap}
+.btn-fill{background:var(--accent);color:#fff;padding:13px 32px;font-weight:700;font-size:13px;letter-spacing:1px;border-radius:50px;transition:background .2s;box-shadow:0 6px 24px rgba(124,58,237,0.28)}
+.btn-fill:hover{background:var(--accent3)}
+.btn-ghost{border:1.5px solid var(--border);color:var(--accent);padding:13px 32px;font-size:13px;letter-spacing:1px;border-radius:50px;font-weight:600;transition:border-color .2s,background .2s}
+.btn-ghost:hover{border-color:var(--accent);background:var(--bg2)}
+.scroll-hint{margin-top:56px;font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:3px;animation:bob 2s infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* ABOUT */
+#about{padding:100px 6vw;max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.section-tag{font-family:'Space Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:4px;margin-bottom:10px;text-transform:uppercase}
+h2{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;margin-bottom:48px;letter-spacing:-0.5px}
+.about-grid{display:grid;grid-template-columns:1fr 2fr;gap:56px;align-items:start}
+.avatar-wrap{display:flex;flex-direction:column;align-items:center;gap:20px}
+.avatar{width:200px;height:200px;border-radius:20px;background:var(--bg2);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:72px;box-shadow:0 8px 32px var(--shadow)}
+.avatar-name{font-family:'Space Mono',monospace;font-size:14px;font-weight:700;color:var(--accent);letter-spacing:2px}
+.avatar-role{font-size:12px;color:var(--muted);letter-spacing:1px;text-align:center}
+.about-text{font-size:15px;color:var(--muted);line-height:1.9;margin-bottom:28px}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.info-item{background:var(--card);border:1.5px solid var(--border);border-radius:10px;padding:14px 18px}
+.info-label{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:2px;margin-bottom:4px;text-transform:uppercase}
+.info-val{font-size:13px;font-weight:700;color:var(--text)}
+.badge-green{display:inline-block;background:rgba(34,197,94,0.1);color:#16a34a;border:1px solid rgba(34,197,94,0.3);font-size:11px;padding:2px 10px;border-radius:20px;font-family:'Space Mono',monospace}
+
+/* SKILLS */
+#skills{background:var(--bg2);padding:100px 6vw;position:relative;z-index:1}
+.skills-inner{max-width:1100px;margin:0 auto}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.skill-card{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:22px 24px;transition:border-color .2s,box-shadow .2s;position:relative;overflow:hidden}
+.skill-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.skill-card:hover{border-color:var(--accent);box-shadow:0 6px 28px var(--shadow)}
+.skill-cat{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--accent);margin-bottom:14px;text-transform:uppercase;font-weight:700}
+.skill-tags{display:flex;flex-wrap:wrap;gap:7px}
+.tag{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:12px;color:var(--muted);font-family:'Space Mono',monospace}
+
+/* STAGE */
+#work{padding:100px 6vw;max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.stage-block{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:36px;box-shadow:0 4px 24px var(--shadow);position:relative;overflow:hidden}
+.stage-block::after{content:'';position:absolute;top:0;left:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--accent),var(--accent2))}
+.stage-head{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;margin-bottom:24px}
+.stage-title{font-size:20px;font-weight:800;color:var(--text)}
+.stage-co{color:var(--accent);font-weight:700;font-size:16px;margin-top:6px}
+.stage-date{font-family:'Space Mono',monospace;font-size:12px;color:var(--accent);background:var(--bg2);border:1.5px solid var(--border);padding:7px 16px;border-radius:30px;white-space:nowrap}
+.stage-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.stage-list li{font-size:14px;color:var(--muted);padding-left:22px;position:relative;line-height:1.7}
+.stage-list li::before{content:'▹';position:absolute;left:0;color:var(--accent);font-size:14px}
+.env-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;padding-top:20px;border-top:1px solid var(--border)}
+.tag-accent{color:var(--accent);border-color:rgba(124,58,237,0.35);background:rgba(124,58,237,0.06)}
+
+/* PROJETS */
+#projects{background:var(--bg2);padding:100px 6vw;position:relative;z-index:1}
+.proj-inner{max-width:1100px;margin:0 auto}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+.proj-card{background:var(--card);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color .2s,box-shadow .2s}
+.proj-card:hover{border-color:var(--accent);box-shadow:0 8px 32px var(--shadow)}
+.proj-thumb{height:140px;background:linear-gradient(135deg,var(--bg2),var(--bg3));display:flex;align-items:center;justify-content:center;font-size:48px;border-bottom:1px solid var(--border)}
+.proj-body{padding:22px}
+.proj-num{font-family:'Space Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:2px;margin-bottom:6px}
+.proj-title{font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px}
+.proj-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:14px}
+.proj-tags{display:flex;flex-wrap:wrap;gap:6px}
+
+/* CONTACT */
+#contact{padding:100px 6vw;max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.contact-card{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:24px 28px;display:flex;align-items:center;gap:18px;transition:border-color .2s,box-shadow .2s;cursor:pointer}
+.contact-card:hover{border-color:var(--accent);box-shadow:0 6px 24px var(--shadow)}
+.contact-icon{width:46px;height:46px;border-radius:10px;background:var(--bg2);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.contact-label{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:2px;margin-bottom:4px;text-transform:uppercase}
+.contact-val{font-size:14px;font-weight:700;color:var(--text)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:28px 6vw;text-align:center;font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);background:var(--bg);position:relative;z-index:1}
+.divider{height:1px;background:var(--border);position:relative;z-index:1}
+
+@media(max-width:768px){
+  .about-grid{grid-template-columns:1fr}
+  .info-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  #about,#work,#contact,#skills,#projects{padding:70px 5vw}
+}
+</style>
+</head>
+<body>
+<canvas id="mc"></canvas>
+
+<nav>
+  <div class="logo">VS.</div>
+  <div class="nav-links">
+    <a href="#home">Accueil</a>
+    <a href="#about">Qui suis-je ?</a>
+    <a href="#skills">Compétences</a>
+    <a href="#work">Expérience</a>
+    <a href="#projects">Projets</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-inner">
+    <div class="hero-badge">BTS SIO — SISR</div>
+    <h1>Bonjour, je suis<br><span>Vali Sam</span></h1>
+    <p class="hero-sub">Étudiant passionné par la cybersécurité et l'administration systèmes &amp; réseaux. En recherche d'alternance à Rennes et alentours.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-fill">Me contacter</a>
+      <a href="#work" class="btn-ghost">Voir mon stage</a>
+    </div>
+    <div class="scroll-hint">↓ &nbsp; scroll</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-tag">01 — à propos</div>
+  <h2>Qui suis-je ?</h2>
+  <div class="about-grid">
+    <div class="avatar-wrap">
+      <div class="avatar">👤</div>
+      <div class="avatar-name">VALI SAM</div>
+      <div class="avatar-role">Admin Sys &amp; Réseaux<br>BTS SIO SISR</div>
+    </div>
+    <div class="about-right">
+      <p class="about-text">Étudiant en 1ère année de BTS SIO option SISR, je me spécialise dans l'administration des systèmes et réseaux avec une forte appétence pour la <strong style="color:var(--text)">cybersécurité</strong>.<br><br>Mon stage chez EasyCare m'a permis de travailler sur des infrastructures Linux en production (OVH, Scaleway), de réaliser des migrations de serveurs critiques et de mettre en place des stratégies de sauvegarde automatisée.<br><br>Je cherche activement une <strong style="color:var(--accent)">alternance</strong> pour ma 2ème année dans la région de Rennes.</p>
+      <div class="info-grid">
+        <div class="info-item"><div class="info-label">Formation</div><div class="info-val">BTS SIO SISR — 1ère année</div></div>
+        <div class="info-item"><div class="info-label">Localisation</div><div class="info-val">Rennes &amp; alentours</div></div>
+        <div class="info-item"><div class="info-label">Spécialité</div><div class="info-val">Systèmes &amp; Réseaux</div></div>
+        <div class="info-item"><div class="info-label">Disponibilité</div><div class="info-val"><span class="badge-green">● Alternance 2026</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="skills-inner">
+    <div class="section-tag">02 — compétences</div>
+    <h2>Mes compétences</h2>
+    <div class="skills-grid">
+      <div class="skill-card"><div class="skill-cat">Systèmes</div><div class="skill-tags"><span class="tag">Linux Debian</span><span class="tag">Windows Server</span><span class="tag">Active Directory</span><span class="tag">Bash</span></div></div>
+      <div class="skill-card"><div class="skill-cat">Cloud &amp; Infra</div><div class="skill-tags"><span class="tag">OVH</span><span class="tag">Scaleway</span><span class="tag">Docker</span><span class="tag">Virtualisation</span></div></div>
+      <div class="skill-card"><div class="skill-cat">Services</div><div class="skill-tags"><span class="tag">GitLab</span><span class="tag">Nextcloud</span><span class="tag">MySQL</span><span class="tag">PHPMyAdmin</span><span class="tag">Matomo</span></div></div>
+      <div class="skill-card"><div class="skill-cat">Réseau &amp; Sécu</div><div class="skill-tags"><span class="tag">TCP/IP</span><span class="tag">VLAN</span><span class="tag">Firewall</span><span class="tag">Scan Vulnérabilités</span></div></div>
+      <div class="skill-card"><div class="skill-cat">Monitoring</div><div class="skill-tags"><span class="tag">Supervision logs</span><span class="tag">Backup auto</span><span class="tag">Alerting</span></div></div>
+      <div class="skill-card"><div class="skill-cat">Outils</div><div class="skill-tags"><span class="tag">Git</span><span class="tag">SSH</span><span class="tag">Ansible</span><span class="tag">VS Code</span></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- STAGE -->
+<section id="work">
+  <div class="section-tag">03 — expérience</div>
+  <h2>Mon stage</h2>
+  <div class="stage-block">
+    <div class="stage-head">
+      <div>
+        <div class="stage-title">Administrateur Systèmes et Réseaux</div>
+        <div class="stage-co">EasyCare</div>
+      </div>
+      <div class="stage-date">Avril 2026 → Juin 2026</div>
+    </div>
+    <ul class="stage-list">
+      <li>Migration de serveurs Linux (Debian 10→13, Debian 12→13) sur infrastructure OVH et Scaleway</li>
+      <li>Audit des services existants et identification des dépendances techniques</li>
+      <li>Mise en place de stratégies de sauvegarde automatisée (backup multi-serveurs)</li>
+      <li>Administration de services web et applicatifs : GitLab, Nextcloud, Matomo, MySQL, PHPMyAdmin</li>
+      <li>Gestion et maintien de serveurs applicatifs (jeux, monitoring, web services)</li>
+      <li>Participation à l'amélioration de la sécurité (scan de vulnérabilités, bonnes pratiques)</li>
+      <li>Proposition de solutions de dockerisation pour moderniser l'infrastructure</li>
+      <li>Supervision et amélioration du monitoring et des logs</li>
+    </ul>
+    <div class="env-row">
+      <span class="tag tag-accent">Linux Debian</span>
+      <span class="tag">Docker</span><span class="tag">OVH</span><span class="tag">Scaleway</span><span class="tag">GitLab</span><span class="tag">MySQL</span><span class="tag">Nextcloud</span><span class="tag">Matomo</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJETS -->
+<section id="projects">
+  <div class="proj-inner">
+    <div class="section-tag">04 — projets</div>
+    <h2>Mes projets</h2>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <div class="proj-thumb">🖥️</div>
+        <div class="proj-body">
+          <div class="proj-num">PROJET 01</div>
+          <div class="proj-title">Infrastructure Réseau</div>
+          <div class="proj-desc">Mise en place d'une infrastructure réseau complète avec routage, VLAN et services DHCP/DNS en environnement virtualisé.</div>
+          <div class="proj-tags"><span class="tag">Cisco Packet Tracer</span><span class="tag">VLAN</span><span class="tag">DHCP</span></div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-thumb">🔒</div>
+        <div class="proj-body">
+          <div class="proj-num">PROJET 02</div>
+          <div class="proj-title">Sécurité Système</div>
+          <div class="proj-desc">À compléter avec tes projets CTF, labs, hardening de serveurs...</div>
+          <div class="proj-tags"><span class="tag">Linux</span><span class="tag">Sécurité</span></div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-thumb">⚙️</div>
+        <div class="proj-body">
+          <div class="proj-num">PROJET 03</div>
+          <div class="proj-title">Ton projet ici</div>
+          <div class="proj-desc">Décris-moi tes projets scolaires ou personnels et je les ajouterai !</div>
+          <div class="proj-tags"><span class="tag">+ ajouter</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-tag">05 — contact</div>
+  <h2>Me contacter</h2>
+  <div class="contact-grid">
+    <div class="contact-card"><div class="contact-icon">✉️</div><div><div class="contact-label">Email</div><div class="contact-val">votre.email@exemple.fr</div></div></div>
+    <div class="contact-card"><div class="contact-icon">💼</div><div><div class="contact-label">LinkedIn</div><div class="contact-val">linkedin.com/in/vali-sam</div></div></div>
+    <div class="contact-card"><div class="contact-icon">🐙</div><div><div class="contact-label">GitHub</div><div class="contact-val">github.com/valisam</div></div></div>
+    <div class="contact-card"><div class="contact-icon">📍</div><div><div class="contact-label">Localisation</div><div class="contact-val">Rennes &amp; alentours</div></div></div>
+  </div>
+</section>
+
+<footer>
+  <p>Fait avec <span style="color:var(--accent)">♥</span> par <strong style="color:var(--accent)">Vali Sam</strong> — BTS SIO SISR · 2025–2026</p>
+</footer>
+
+<script>
+const c=document.getElementById('mc'),x=c.getContext('2d');
+function rs(){c.width=window.innerWidth;c.height=document.body.scrollHeight}
+rs();window.addEventListener('resize',rs);
+const fs=14,ch='アイウエオカキクケコサシスセソタチツテトナニヌネノ0123456789ABCDEF';
+let co=Math.floor(c.width/fs),dr=Array.from({length:co},()=>Math.random()*-150);
+function draw(){
+  c.height=document.body.scrollHeight;
+  co=Math.floor(c.width/fs);
+  while(dr.length<co)dr.push(Math.random()*-150);
+  x.fillStyle='rgba(250,248,255,0.06)';
+  x.fillRect(0,0,c.width,c.height);
+  x.font=fs+'px Space Mono,monospace';
+  for(let i=0;i<dr.length;i++){
+    const y=dr[i]*fs;
+    x.fillStyle='rgba(196,181,253,0.95)';
+    x.fillText(ch[Math.floor(Math.random()*ch.length)],i*fs,y);
+    for(let t=1;t<=12;t++){
+      x.fillStyle=`rgba(124,58,237,${0.75*(1-t/13)})`;
+      x.fillText(ch[Math.floor(Math.random()*ch.length)],i*fs,y-t*fs);
+    }
+    if(y>c.height&&Math.random()>.975)dr[i]=0;
+    dr[i]+=.45;
+  }
+}
+setInterval(draw,50);
+</script>
+</body>
+</html>
