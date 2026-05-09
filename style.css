@@ -425,6 +425,57 @@ h2 span { color: var(--accent); }
 }
 .bar-fill.animated { transform: scaleX(1); }
 
+/* FORMATION */
+.formation-top {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 24px;
+}
+.ftop-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 24px;
+  backdrop-filter: blur(10px);
+  transition: .3s;
+}
+.ftop-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+.ftop-icon { font-size: 28px; margin-bottom: 12px; }
+.ftop-title { font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
+.ftop-sub { font-size: 12px; color: var(--accent3); font-family: 'Space Mono'; margin-bottom: 14px; }
+.flist { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.flist li { font-size: 13px; color: var(--muted); display: flex; align-items: flex-start; gap: 8px; }
+.flist li::before { content: '›'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+
+.fcomp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.fcomp-cat { font-size: 11px; font-family: 'Space Mono'; color: var(--accent); letter-spacing: 1px; margin-bottom: 10px; }
+
+.foptions { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.foption-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px;
+  backdrop-filter: blur(10px);
+  transition: .3s;
+}
+.foption-active { border-color: var(--accent); box-shadow: 0 0 30px rgba(168,85,247,.1); }
+.foption-muted { opacity: .7; }
+.foption-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 4px; }
+.foption-icon { font-size: 30px; flex-shrink: 0; }
+.foption-title { font-weight: 700; font-size: 1rem; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.foption-badge {
+  padding: 2px 10px;
+  background: rgba(168,85,247,.15);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 10px;
+  color: var(--accent3);
+  font-family: 'Space Mono';
+}
+.foption-sub { font-size: 12px; color: var(--accent); font-family: 'Space Mono'; margin-top: 4px; }
+
 /* CERTIFICATIONS */
 .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
 .cert-card {
@@ -614,5 +665,6 @@ footer {
 @media (max-width: 850px) {
   .about-grid, .skills-layout, .contact-wrap { grid-template-columns: 1fr; }
   .traits-row { grid-template-columns: 1fr; }
+  .formation-top, .fcomp-grid, .foptions { grid-template-columns: 1fr; }
   .nav-links a:not(#theme-btn) { display: none; }
 }
